@@ -2,13 +2,13 @@
   "name": "stav-rizeni-mvcr-oamp-puppeteer",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andy <43708848+andriilive@users.noreply.github.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^18.0.3",
-    "ts-node": "^10.8.2",
-    "typescript": "^4.7.4"
+  "engines": {
+    "node": ">=16.13.0"
   },
+  "author": "Andy <43708848+andriilive@users.noreply.github.com>",
+  "description": "Check the application status at https://frs.gov.cz/cs/ioff/application-status with puppetter.js and optionally sends a mail",
+  "license": "MIT",
+  "devDependencies": {},
   "dependencies": {
     "dotenv": "^16.0.1",
     "nodemailer": "^6.7.7",

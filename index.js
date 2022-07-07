@@ -40,7 +40,7 @@ function send_mail(emailPlain, emailHtml) {
 (async () => {
 
     const browser = await puppeteer.launch({
-        slowMo: 300, // slow down by 250ms
+        slowMo: 300, // slow down by 300ms
         headless: isDebug
     });
 
