@@ -22,6 +22,7 @@ function send_mail(emailPlain, emailHtml) {
         from: process.env.GMAIL_USER,
         to: process.env.SEND_SUCCESS_TO,
         subject: emailPlain,
+        text: emailPlain,
         html: emailHtml
     };
 
