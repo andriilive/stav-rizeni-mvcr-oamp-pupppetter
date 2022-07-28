@@ -41,7 +41,7 @@ function send_mail(emailPlain, emailHtml) {
 
     const browser = await puppeteer.launch({
         slowMo: 300, // slow down by 300ms
-        headless: isDebug
+        headless: (isDebug),
     });
 
     const page = await browser.newPage();
