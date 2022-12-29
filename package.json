@@ -16,6 +16,6 @@
     "puppeteer-jquery": "^0.3.4"
   },
   "scripts": {
-    "default": "node index.js"
+    "start": "node index.js"
   }
 }

@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 // Load env vars
 dotenv.config();
 
-const isDebug = (process.env.DEBUG === true);
+const isDebug = process.env.DEBUG || false;
 
 function send_mail(emailPlain, emailHtml) {
     let transporter = nodemailer.createTransport({
@@ -41,7 +41,7 @@ function send_mail(emailPlain, emailHtml) {
 
     const browser = await puppeteer.launch({
         slowMo: 300, // slow down by 300ms
-        headless: (isDebug),
+        headless: true,
     });
 
     const page = await browser.newPage();
@@ -66,8 +66,11 @@ function send_mail(emailPlain, emailHtml) {
 
     const applicationNumber = (!process.env.CISLO_ZOV) ? `OAM-${process.env.CISLO_JEDNACI}/${process.env.CISLO_JEDNACI_TYPE}-${process.env.CISLO_JEDNACI_ROK}` : process.env.CISLO_ZOV;
     result = `${result} = ${applicationNumber}`;
-    console.log(result);
+    
+    const success = result.includes('POVOLENO');
+    
+    console.log( `${success ? `🥳 🎉` : ' 😢 '} ${result} \nchecked: ${new Date().toLocaleString()}\nkeep calm and carry on!`);
 
     await browser.close();
-    if (process.env.ENABLE_MAIL) send_mail(result, resultHtml); // If callback  mail enabled
+    (process.env.ENABLE_MAIL || false) && send_mail(result, resultHtml); // If callback  mail enabled
 })();
